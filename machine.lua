@@ -3,15 +3,64 @@ local shape = {}
 local make_ok = {}
 local anzahl = {}
 
+minetest.register_node("mysiding:machine2", {
+	description = "Siding Machine 2",
+	tiles = {
+		"mysiding_right_top.png",
+		"mysiding_right_bottom.png",
+		"mysiding_right_side.png",
+		"mysiding_left_side.png",
+		"mysiding_right_back.png",
+		"mysiding_right_front.png"
+		},
+	drawtype = "nodebox",
+	paramtype = "light",
+	paramtype2 = "facedir",
+	groups = {cracky=2},
+	drop = "mysiding:machine",
+	node_box = {
+		type = "fixed",
+		fixed = {
+			{0.3125, -0.5, 0.3125, 0.5, 0.125, 0.5},
+			{0.3125, -0.5, -0.5, 0.5, 0.125, -0.3125}, 
+			{-0.5, -0.25, -0.5, 0.5, 0.25, 0.5}, 
+			{-0.5, 0.25, 0.1875, 0.5, 0.5, 0.3125}, 
+			{-0.5, 0.25, -0.25, -0.4375, 0.3125, 0.1875}, 
+		}
+	},
+
+	selection_box = {
+		type = "fixed",
+		fixed = {
+			{0, 0, 0, 0.0625, 0.0625, 0.0625},
+		}
+	},
+
+after_destruct = function(pos)
+	if minetest.get_node({x=pos.x + 1, y=pos.y, z=pos.z}).name == "mysiding:machine" then
+      minetest.set_node({x=pos.x + 1, y=pos.y, z=pos.z}, {name="air"})
+	end
+	if minetest.get_node({x=pos.x - 1, y=pos.y, z=pos.z}).name == "mysiding:machine" then
+      minetest.set_node({x=pos.x - 1, y=pos.y, z=pos.z}, {name="air"})
+	end
+	if minetest.get_node({x=pos.x, y=pos.y, z=pos.z + 1}).name == "mysiding:machine" then
+      minetest.set_node({x=pos.x, y=pos.y, z=pos.z + 1}, {name="air"})
+	end
+	if minetest.get_node({x=pos.x, y=pos.y, z=pos.z - 1}).name == "mysiding:machine" then
+      minetest.set_node({x=pos.x, y=pos.y, z=pos.z - 1}, {name="air"})
+	end
+end,
+})
+
 minetest.register_node("mysiding:machine", {
 	description = "Siding Machine",
 	tiles = {
-		"mysiding_machine_top.png",
-		"mysiding_machine_bottom.png",
-		"mysiding_machine_side.png",
-		"mysiding_machine_side.png",
-		"mysiding_machine_front.png",
-		"mysiding_machine_front.png",
+		"mysiding_left_top.png",
+		"mysiding_left_bottom.png",
+		"mysiding_right_side.png",
+		"mysiding_left_side.png",
+		"mysiding_left_back.png",
+		"mysiding_left_front.png"
 		},
 	drawtype = "nodebox",
 	paramtype = "light",
@@ -20,30 +69,47 @@ minetest.register_node("mysiding:machine", {
 	node_box = {
 		type = "fixed",
 		fixed = {
-			{-0.5, -0.5, 0.25, -0.375, 0.125, 0.375}, -- NodeBox1
-			{-0.5, -0.5, -0.125, -0.375, 0.125, 0}, -- NodeBox2
-			{-0.5, 0.125, -0.1875, 0.5, 0.25, 0.4375}, -- NodeBox3
-			{-0.5, 0.25, 0.3125, 0.5, 0.5, 0.4375}, -- NodeBox4
-
-
-			{0.5, 0.25, 0.3125, 1.5, 0.5, 0.4375}, -- NodeBox1
-			{0.5, 0.125, -0.1875, 1.5, 0.25, 0.4375}, -- NodeBox2
-			{1.375, -0.5, 0.25, 1.5, 0.125, 0.375}, -- NodeBox3
-			{1.375, -0.5, -0.125, 1.5, 0.125, 0}, -- NodeBox4
-			{0.5, 0.25, 0.1875, 0.75, 0.3125, 0.25}, -- NodeBox5
-			{0.5625, 0.25, 0.1875, 0.6875, 0.375, 0.25}, -- NodeBox6  
+			{-0.5, -0.5, 0.3125, -0.3125, 0.125, 0.5}, 
+			{-0.5, -0.5, -0.5, -0.3125, 0.125, -0.3125}, 
+			{-0.5, -0.25, -0.5, 0.5, 0.25, 0.5}, 
+			{-0.5, 0.25, 0.1875, 0.5, 0.5, 0.3125}, 
+			{0.4375, 0.25, -0.25, 0.5, 0.3125, 0.1875}, 
 		}
 	},
 
--- Set owner of Siding Machine
+	selection_box = {
+		type = "fixed",
+		fixed = {
+			{-0.5,-0.5,-0.5,1.5,0.25,0.5}
+
+		}
+	},
+	collision_box = {
+		type = "fixed",
+		fixed = {
+			{-0.5,-0.5,-0.5,1.5,0.25,0.5}
+
+		}
+	},
+
+
 after_place_node = function(pos, placer)
+      local dir = placer:get_look_dir()
+      local right_pos = vector.new(pos)
+      if math.abs(dir.x) < math.abs(dir.z) then
+         right_pos.x = right_pos.x+dir.z/math.abs(dir.z)
+      else
+         right_pos.z = right_pos.z-dir.x/math.abs(dir.x)
+      end
+      local right_node = minetest.get_node(right_pos)
+	if right_node.name == "air" then
+      minetest.set_node(right_pos, {name="mysiding:machine2",param2 = minetest.dir_to_facedir(placer:get_look_dir())})
+	end
+
 local meta = minetest.env:get_meta(pos);
 	meta:set_string("owner",  (placer:get_player_name() or ""));
-	meta:set_string("infotext",  "Siding Machine is empty (owned by " .. (placer:get_player_name() or "") .. ")");
-	end,
-
-can_dig = function(pos,player)
-	local meta = minetest.env:get_meta(pos);
+	meta:set_string("infotext",  "Siding Machine (owned by " .. (placer:get_player_name() or "") .. ")");
+	
 	local inv = meta:get_inventory()
 	if not inv:is_empty("ingot") then
 		return false
@@ -54,6 +120,7 @@ can_dig = function(pos,player)
 end,
 
 on_construct = function(pos)
+		
 	local meta = minetest.env:get_meta(pos)
 	meta:set_string("formspec", "invsize[10,11;]"..
 		"background[-0.15,-0.25;10.40,11.75;mysiding_background.png]"..
@@ -61,7 +128,7 @@ on_construct = function(pos)
 		"list[current_name;res;7,4;1,1;]"..
 		"label[7,1.5;Input:]"..
 		"label[7,3.5;Output:]"..
-		"label[0,0;Choose Brick Stye:]"..
+		"label[0,0;Choose Siding Stye:]"..
 		"label[1.5,1.5;Wide Siding]"..
 		"image_button[1.5,2;1,1;mysiding_mach1.png;wide; ]"..
 		"label[4,1.5;Narrow Siding]"..
@@ -377,17 +444,29 @@ then
 			inv:set_stack("ingot",1,ingotstack)
 		end            
 
-	
-end
-end
+end	
+end,
 
-
+after_destruct = function(pos)
+	if minetest.get_node({x=pos.x + 1, y=pos.y, z=pos.z}).name == "mysiding:machine2" then
+      minetest.set_node({x=pos.x + 1, y=pos.y, z=pos.z}, {name="air"})
+	end
+	if minetest.get_node({x=pos.x - 1, y=pos.y, z=pos.z}).name == "mysiding:machine2" then
+      minetest.set_node({x=pos.x - 1, y=pos.y, z=pos.z}, {name="air"})
+	end
+	if minetest.get_node({x=pos.x, y=pos.y, z=pos.z+ 1}).name == "mysiding:machine2" then
+      minetest.set_node({x=pos.x, y=pos.y, z=pos.z + 1}, {name="air"})
+	end
+	if minetest.get_node({x=pos.x, y=pos.y, z=pos.z - 1}).name == "mysiding:machine2" then
+      minetest.set_node({x=pos.x, y=pos.y, z=pos.z - 1}, {name="air"})
+	end
+end,
 })
 
 --Craft
 
 minetest.register_craft({
-		output = 'mybricks:machine',
+		output = 'mysiding:machine',
 		recipe = {
 			{'default:copperblock', 'default:copperblock', 'default:copperblock'},
 			{'default:copperblock', 'default:steel_ingot', 'default:copperblock'},
