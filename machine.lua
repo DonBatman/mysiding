@@ -4,7 +4,7 @@ local make_ok = {}
 local anzahl = {}
 
 minetest.register_node("mysiding:machine2", {
-	description = "Siding Machine 2",
+--	description = "Siding Machine 2",
 	tiles = {
 		"mysiding_right_top.png",
 		"mysiding_right_bottom.png",
@@ -63,6 +63,7 @@ minetest.register_node("mysiding:machine", {
 		"mysiding_left_front.png"
 		},
 	drawtype = "nodebox",
+	inventory_image = "mysiding_mach_inv.png",
 	paramtype = "light",
 	paramtype2 = "facedir",
 	groups = {cracky=2},
