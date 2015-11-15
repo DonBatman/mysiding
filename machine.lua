@@ -107,7 +107,7 @@ after_place_node = function(pos, placer)
       minetest.set_node(right_pos, {name="mysiding:machine2",param2 = minetest.dir_to_facedir(placer:get_look_dir())})
 	end
 
-local meta = minetest.env:get_meta(pos);
+local meta = minetest.get_meta(pos);
 	meta:set_string("owner",  (placer:get_player_name() or ""));
 	meta:set_string("infotext",  "Siding Machine (owned by " .. (placer:get_player_name() or "") .. ")");
 	
@@ -122,7 +122,7 @@ end,
 
 on_construct = function(pos)
 		
-	local meta = minetest.env:get_meta(pos)
+	local meta = minetest.get_meta(pos)
 	meta:set_string("formspec", "invsize[10,11;]"..
 		"background[-0.15,-0.25;10.40,11.75;mysiding_background.png]"..
 		"list[current_name;ingot;7,2;1,1;]"..
@@ -142,7 +142,7 @@ on_construct = function(pos)
 end,
 
 on_receive_fields = function(pos, formname, fields, sender)
-	local meta = minetest.env:get_meta(pos)
+	local meta = minetest.get_meta(pos)
 	local inv = meta:get_inventory()
 
 if fields["wide"] 
