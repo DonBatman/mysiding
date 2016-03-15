@@ -9,14 +9,6 @@ mysiding.register_all(--material, description, image, groups, craft item
 	)
 
 mysiding.register_all(--material, description, image, groups, craft item
-	"default_desert_sand", 
-	"Desert Sand", 
-	"default_desert_sand.png",
-	"{cracky = 1, oddly_breakable_by_hand = 1,not_in_creative_inventory=1}",
-	"default:desert_sand",
-	"normal"
-	)
-mysiding.register_all(--material, description, image, groups, craft item
 	"default_clay", 
 	"Clay", 
 	"default_clay.png",
@@ -41,22 +33,6 @@ mysiding.register_all(--material, description, image, groups, craft item
 	"normal"
 	)
 mysiding.register_all(--material, description, image, groups, craft item
-	"default_cactus", 
-	"Cactus", 
-	"default_cactus_side.png",
-	"{cracky = 1, oddly_breakable_by_hand = 1,not_in_creative_inventory=1}",
-	"default:cactus",
-	"normal"
-	)
-mysiding.register_all(--material, description, image, groups, craft item
-	"default_sand", 
-	"Sand", 
-	"default_sand.png",
-	"{cracky = 1, oddly_breakable_by_hand = 1,not_in_creative_inventory=1}",
-	"default:sand",
-	"normal"
-	)
-mysiding.register_all(--material, description, image, groups, craft item
 	"default_desert_stone", 
 	"Desert Stone", 
 	"default_desert_stone.png",
@@ -73,11 +49,11 @@ mysiding.register_all(--material, description, image, groups, craft item
 	"normal"
 	)
 mysiding.register_all(--material, description, image, groups, craft item
-	"default_pinewood", 
+	"default_pine_wood", 
 	"Pine Wood", 
-	"default_pinewood.png",
+	"default_pine_wood.png",
 	"{cracky = 1, oddly_breakable_by_hand = 1,not_in_creative_inventory=1}",
-	"default:pinewood",
+	"default:pine_wood",
 	"normal"
 	)
 mysiding.register_all(--material, description, image, groups, craft item
@@ -89,67 +65,11 @@ mysiding.register_all(--material, description, image, groups, craft item
 	"normal"
 	)
 mysiding.register_all(--material, description, image, groups, craft item
-	"default_brick", 
-	"Brick", 
-	"default_brick.png",
-	"{cracky = 1, oddly_breakable_by_hand = 1,not_in_creative_inventory=1}",
-	"default:brick",
-	"normal"
-	)
-mysiding.register_all(--material, description, image, groups, craft item
-	"default_bronze_block", 
-	"Bronze Block", 
-	"default_bronze_block.png",
-	"{cracky = 1, oddly_breakable_by_hand = 1,not_in_creative_inventory=1}",
-	"default:bronzeblock",
-	"normal"
-	)
-mysiding.register_all(--material, description, image, groups, craft item
-	"default_coal_block", 
-	"Coal Block", 
-	"default_coal_block.png",
-	"{cracky = 1, oddly_breakable_by_hand = 1,not_in_creative_inventory=1}",
-	"default:coalblock",
-	"normal"
-	)
-mysiding.register_all(--material, description, image, groups, craft item
-	"default_copper_block", 
-	"Copper Block", 
-	"default_copper_block.png",
-	"{cracky = 1, oddly_breakable_by_hand = 1,not_in_creative_inventory=1}",
-	"default:copperblock",
-	"normal"
-	)
-mysiding.register_all(--material, description, image, groups, craft item
 	"default_desert_cobble", 
 	"Desert Cobble", 
 	"default_desert_cobble.png",
 	"{cracky = 1, oddly_breakable_by_hand = 1,not_in_creative_inventory=1}",
 	"default:desert_cobble",
-	"normal"
-	)
-mysiding.register_all(--material, description, image, groups, craft item
-	"default_diamond_block", 
-	"Diamond Block", 
-	"default_diamond_block.png",
-	"{cracky = 1, oddly_breakable_by_hand = 1,not_in_creative_inventory=1}",
-	"default:diamondblock",
-	"normal"
-	)
-mysiding.register_all(--material, description, image, groups, craft item
-	"default_glass", 
-	"Glass", 
-	"default_glass.png",
-	"{cracky = 1, oddly_breakable_by_hand = 1,not_in_creative_inventory=1}",
-	"default:glass",
-	"glasslike"
-	)
-mysiding.register_all(--material, description, image, groups, craft item
-	"default_gold_block", 
-	"Gold Block", 
-	"default_gold_block.png",
-	"{cracky = 1, oddly_breakable_by_hand = 1,not_in_creative_inventory=1}",
-	"default:goldblock",
 	"normal"
 	)
 mysiding.register_all(--material, description, image, groups, craft item
@@ -161,22 +81,6 @@ mysiding.register_all(--material, description, image, groups, craft item
 	"normal"
 	)
 mysiding.register_all(--material, description, image, groups, craft item
-	"default_ice", 
-	"Ice", 
-	"default_ice.png",
-	"{cracky = 1, oddly_breakable_by_hand = 1,not_in_creative_inventory=1}",
-	"default:ice",
-	"normal"
-	)
-mysiding.register_all(--material, description, image, groups, craft item
-	"default_jungletree", 
-	"Jungle Tree", 
-	"default_jungletree.png",
-	"{cracky = 1, oddly_breakable_by_hand = 1,not_in_creative_inventory=1}",
-	"default:jungletree",
-	"normal"
-	)
-mysiding.register_all(--material, description, image, groups, craft item
 	"default_junglewood", 
 	"Jungle Wood", 
 	"default_junglewood.png",
@@ -185,107 +89,11 @@ mysiding.register_all(--material, description, image, groups, craft item
 	"normal"
 	)
 mysiding.register_all(--material, description, image, groups, craft item
-	"default_lava", 
-	"Lava", 
-	"default_lava.png",
-	"{cracky = 1, oddly_breakable_by_hand = 1,not_in_creative_inventory=1}",
-	"default:lava_source",
-	"normal"
-	)
-mysiding.register_all(--material, description, image, groups, craft item
-	"default_mese", 
-	"Mese", 
-	"default_mese_block.png",
-	"{cracky = 1, oddly_breakable_by_hand = 1,not_in_creative_inventory=1}",
-	"default:mese",
-	"normal"
-	)
-mysiding.register_all(--material, description, image, groups, craft item
 	"default_mossycobble", 
 	"Mossy Cobble", 
 	"default_mossycobble.png",
 	"{cracky = 1, oddly_breakable_by_hand = 1,not_in_creative_inventory=1}",
 	"default:mossycobble",
-	"normal"
-	)
-mysiding.register_all(--material, description, image, groups, craft item
-	"default_obsidian", 
-	"Obsidian", 
-	"default_obsidian.png",
-	"{cracky = 1, oddly_breakable_by_hand = 1,not_in_creative_inventory=1}",
-	"default:obsidian",
-	"normal"
-	)
-mysiding.register_all(--material, description, image, groups, craft item, drawtype
-	"default_obsidian_glass", 
-	"Obsidian Glass", 
-	"default_obsidian_glass.png",
-	"{cracky = 1, oddly_breakable_by_hand = 1,not_in_creative_inventory=1}",
-	"default:obsidian_glass",
-	"glasslike"
-	)
-mysiding.register_all(--material, description, image, groups, craft item
-	"default_obsidian_brick", 
-	"Obsidian Brick", 
-	"default_obsidian_brick.png",
-	"{cracky = 1, oddly_breakable_by_hand = 1,not_in_creative_inventory=1}",
-	"default:obsidianbrick",
-	"normal"
-	)
-mysiding.register_all(--material, description, image, groups, craft item
-	"default_pinetree", 
-	"Pine Tree", 
-	"default_pinetree.png",
-	"{cracky = 1, oddly_breakable_by_hand = 1,not_in_creative_inventory=1}",
-	"default:pinetree",
-	"normal"
-	)
-mysiding.register_all(--material, description, image, groups, craft item
-	"default_sandstone_brick", 
-	"Sandstone Brick", 
-	"default_sandstone_brick.png",
-	"{cracky = 1, oddly_breakable_by_hand = 1,not_in_creative_inventory=1}",
-	"default:sandstonebrick",
-	"normal"
-	)
-mysiding.register_all(--material, description, image, groups, craft item
-	"default_snow", 
-	"Snow", 
-	"default_snow.png",
-	"{cracky = 1, oddly_breakable_by_hand = 1,not_in_creative_inventory=1}",
-	"default:snowblock",
-	"normal"
-	)
-mysiding.register_all(--material, description, image, groups, craft item
-	"default_steel_block", 
-	"Steel Block", 
-	"default_steel_block.png",
-	"{cracky = 1, oddly_breakable_by_hand = 1,not_in_creative_inventory=1}",
-	"default:steelblock",
-	"normal"
-	)
-mysiding.register_all(--material, description, image, groups, craft item
-	"default_stone_brick", 
-	"Stone Brick", 
-	"default_stone_brick.png",
-	"{cracky = 1, oddly_breakable_by_hand = 1,not_in_creative_inventory=1}",
-	"default:stonebrick",
-	"normal"
-	)
-mysiding.register_all(--material, description, image, groups, craft item
-	"default_tree", 
-	"Tree", 
-	"default_tree.png",
-	"{cracky = 1, oddly_breakable_by_hand = 1,not_in_creative_inventory=1}",
-	"default:tree",
-	"normal"
-	)
-mysiding.register_all(--material, description, image, groups, craft item
-	"default_water", 
-	"Water", 
-	"default_water.png",
-	"{cracky = 1, oddly_breakable_by_hand = 1,not_in_creative_inventory=1}",
-	"default:water_source",
 	"normal"
 	)
 mysiding.register_all(--material, description, image, groups, craft item

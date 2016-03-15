@@ -120,6 +120,18 @@ local meta = minetest.get_meta(pos);
 	return true
 end,
 
+can_dig = function(pos,player)
+	local meta = minetest.get_meta(pos);
+	local inv = meta:get_inventory()
+	if player:get_player_name() == meta:get_string("owner") and
+	inv:is_empty("ingot") and
+	inv:is_empty("res") then
+		return true
+	else
+	return false
+	end
+end,
+
 on_construct = function(pos)
 		
 	local meta = minetest.get_meta(pos)
@@ -181,18 +193,8 @@ then
 				make_ok = "1"
 		end
 
-		if ingotstack:get_name()=="default:desert_sand" then
-				material = "default_desert_sand"
-				make_ok = "1"
-		end
-
 		if ingotstack:get_name()=="default:clay" then
 				material = "default_clay"
-				make_ok = "1"
-		end
-
-		if ingotstack:get_name()=="wool:white" then
-				material = "millwork_white"
 				make_ok = "1"
 		end
 
@@ -211,28 +213,13 @@ then
 				make_ok = "1"
 		end
 
-		if ingotstack:get_name()=="default:cactus" then
-				material = "default_cactus"
-				make_ok = "1"
-		end
-
-		if ingotstack:get_name()=="wool:white" then
-				material = "millwork_white"
-				make_ok = "1"
-		end
-
-		if ingotstack:get_name()=="default:sand" then
-				material = "default_sand"
-				make_ok = "1"
-		end
-
 		if ingotstack:get_name()=="default:wood" then
 				material = "default_wood"
 				make_ok = "1"
 		end
 
-		if ingotstack:get_name()=="default:pinewood" then
-				material = "default_pinewood"
+		if ingotstack:get_name()=="default:pine_wood" then
+				material = "default_pine_wood"
 				make_ok = "1"
 		end
 
@@ -241,43 +228,8 @@ then
 				make_ok = "1"
 		end
 
-		if ingotstack:get_name()=="default:brick" then
-				material = "default_brick"
-				make_ok = "1"
-		end
-
-		if ingotstack:get_name()=="default:bronzeblock" then
-				material = "default_bronze_block"
-				make_ok = "1"
-		end
-
-		if ingotstack:get_name()=="default:coalblock" then
-				material = "default_coal_block"
-				make_ok = "1"
-		end
-
-		if ingotstack:get_name()=="default:copperblock" then
-				material = "default_copper_block"
-				make_ok = "1"
-		end
-
 		if ingotstack:get_name()=="default:desert_cobble" then
 				material = "default_desert_cobble"
-				make_ok = "1"
-		end
-
-		if ingotstack:get_name()=="default:diamondblock" then
-				material = "default_diamond_block"
-				make_ok = "1"
-		end
-
-		if ingotstack:get_name()=="default:glass" then
-				material = "default_glass"
-				make_ok = "1"
-		end
-
-		if ingotstack:get_name()=="default:goldblock" then
-				material = "default_gold_block"
 				make_ok = "1"
 		end
 
@@ -286,83 +238,13 @@ then
 				make_ok = "1"
 		end
 
-		if ingotstack:get_name()=="default:ice" then
-				material = "default_ice"
-				make_ok = "1"
-		end
-
-		if ingotstack:get_name()=="default:jungletree" then
-				material = "default_jungletree"
-				make_ok = "1"
-		end
-
 		if ingotstack:get_name()=="default:junglewood" then
 				material = "default_junglewood"
 				make_ok = "1"
 		end
 
-		if ingotstack:get_name()=="default:lava_source" then
-				material = "default_lava"
-				make_ok = "1"
-		end
-
-		if ingotstack:get_name()=="default:mese" then
-				material = "default_mese"
-				make_ok = "1"
-		end
-
 		if ingotstack:get_name()=="default:mossycobble" then
 				material = "default_mossycobble"
-				make_ok = "1"
-		end
-
-		if ingotstack:get_name()=="default:obsidian" then
-				material = "default_obsidian"
-				make_ok = "1"
-		end
-
-		if ingotstack:get_name()=="default:obsidian_glass" then
-				material = "default_obsidian_glass"
-				make_ok = "1"
-		end
-
-		if ingotstack:get_name()=="default:obsidianbrick" then
-				material = "default_obsidian_brick"
-				make_ok = "1"
-		end
-
-		if ingotstack:get_name()=="default:pinetree" then
-				material = "default_pinetree"
-				make_ok = "1"
-		end
-
-		if ingotstack:get_name()=="default:sanddstonebrick" then
-				material = "default_sandstone_brick"
-				make_ok = "1"
-		end
-
-		if ingotstack:get_name()=="default:snowblock" then
-				material = "default_snow"
-				make_ok = "1"
-		end
-
-		if ingotstack:get_name()=="default:steelblock" then
-				material = "default_steel_block"
-				make_ok = "1"
-		end
-
-		if ingotstack:get_name()=="default:stonebrick" then
-				material = "default_stone_brick"
-				make_ok = "1"
-		end
-
-		if ingotstack:get_name()=="default:tree" then
-				material = "default_tree"
-				make_ok = "1"
-		end
-
-		if ingotstack:get_name()=="default:water_source" then
-				material = "default_water"
 				make_ok = "1"
 		end
 
