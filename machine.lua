@@ -146,6 +146,10 @@ on_construct = function(pos)
 		"image_button[1.5,2;1,1;mysiding_mach1.png;wide; ]"..
 		"label[4,1.5;Narrow Siding]"..
 		"image_button[4,2;1,1;mysiding_mach2.png;narrow; ]"..
+		"label[1.5,3;Wide Corner Siding]"..
+		"image_button[1.5,3.5;1,1;mysiding_mach3.png;widecorner; ]"..
+		"label[4,3;Narrow Corner Siding]"..
+		"image_button[4,3.5;1,1;mysiding_mach4.png;narrowcorner; ]"..
 		"list[current_player;main;1,7;8,4;]")
 	meta:set_string("infotext", "Siding Machine")
 	local inv = meta:get_inventory()
@@ -159,6 +163,8 @@ on_receive_fields = function(pos, formname, fields, sender)
 
 if fields["wide"] 
 or fields["narrow"]
+or fields["widecorner"]
+or fields["narrowcorner"]
 then
 
 	if fields["wide"] then
@@ -179,7 +185,23 @@ then
 		end
 	end
 
+	if fields["widecorner"] then
+		make_ok = "0"
+		anzahl = "1"
+		shape = "mysiding:wide_corner_"
+		if inv:is_empty("ingot") then
+			return
+		end
+	end
 
+	if fields["narrowcorner"] then
+		make_ok = "0"
+		anzahl = "1"
+		shape = "mysiding:narrow_corner_"
+		if inv:is_empty("ingot") then
+			return
+		end
+	end
 
 		local ingotstack = inv:get_stack("ingot", 1)
 		local resstack = inv:get_stack("res", 1)
