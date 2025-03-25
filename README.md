@@ -10,8 +10,11 @@ Craft
 -------
 
 default:copperblock	default:copperblock	default:copperblock
+
 default:copperblock	default:steel_ingot	default:copperblock
+
 default:copperblock	default:copperblock	default:copperblock
+
 
 Code Licence - MIT
 Media Licence - CC0
