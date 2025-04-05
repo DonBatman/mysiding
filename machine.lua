@@ -141,15 +141,34 @@ on_construct = function(pos)
 		"list[current_name;res;7,4;1,1;]"..
 		"label[7,1.5;Input:]"..
 		"label[7,3.5;Output:]"..
+		
 		"label[0,0;Choose Siding Stye:]"..
-		"label[1.5,1.5;Wide Siding]"..
-		"image_button[1.5,2;1,1;mysiding_mach1.png;wide; ]"..
-		"label[4,1.5;Narrow Siding]"..
-		"image_button[4,2;1,1;mysiding_mach2.png;narrow; ]"..
-		"label[1.5,3;Wide Corner Siding]"..
-		"image_button[1.5,3.5;1,1;mysiding_mach3.png;widecorner; ]"..
-		"label[4,3;Narrow Corner Siding]"..
-		"image_button[4,3.5;1,1;mysiding_mach4.png;narrowcorner; ]"..
+		
+		"label[1,0.5;  Wide Siding]"..
+		"image_button[1.5,1;1,1;mysiding_mach1.png;wide; ]"..
+		
+		"label[3.5,0.5; Narrow Siding]"..
+		"image_button[4,1;1,1;mysiding_mach2.png;narrow; ]"..
+		
+		"label[1,2;Wide Corner Siding]"..
+		"image_button[1.5,2.5;1,1;mysiding_mach3.png;widecorner; ]"..
+		
+		"label[3.5,2;Narrow Corner Siding]"..
+		"image_button[4,2.5;1,1;mysiding_mach4.png;narrowcorner; ]"..
+		--------------------------------------------
+		
+		"label[1,3.5;  Wide Siding]"..
+		"image_button[1.5,4;1,1;mysiding_mach5.png;widelight; ]"..
+		
+		"label[3.5,3.5; Narrow Siding]"..
+		"image_button[4,4;1,1;mysiding_mach6.png;narrowlight; ]"..
+		
+		"label[1,5;Wide Corner Siding]"..
+		"image_button[1.5,5.5;1,1;mysiding_mach7.png;widecornerlight; ]"..
+		
+		"label[3.5,5;Narrow Corner Siding]"..
+		"image_button[4,5.5;1,1;mysiding_mach8.png;narrowcornerlight; ]"..
+		
 		"list[current_player;main;1,7;8,4;]")
 	meta:set_string("infotext", "Siding Machine")
 	local inv = meta:get_inventory()
@@ -165,6 +184,10 @@ if fields["wide"]
 or fields["narrow"]
 or fields["widecorner"]
 or fields["narrowcorner"]
+or fields["widelight"] 
+or fields["narrowlight"]
+or fields["widecornerlight"]
+or fields["narrowcornerlight"]
 then
 
 	if fields["wide"] then
@@ -202,143 +225,104 @@ then
 			return
 		end
 	end
+----------------------------------------------------------------------------------
+	if fields["widelight"] then
+		make_ok = "0"
+		anzahl = "1"
+		shape = "mysiding:light_wide_"
+		if inv:is_empty("ingot") then
+			return
+		end
+	end
 
+	if fields["narrowlight"] then
+		make_ok = "0"
+		anzahl = "1"
+		shape = "mysiding:light_narrow_"
+		if inv:is_empty("ingot") then
+			return
+		end
+	end
+
+	if fields["widecornerlight"] then
+		make_ok = "0"
+		anzahl = "1"
+		shape = "mysiding:light_wide_corner_"
+		if inv:is_empty("ingot") then
+			return
+		end
+	end
+
+	if fields["narrowcornerlight"] then
+		make_ok = "0"
+		anzahl = "1"
+		shape = "mysiding:light_narrow_corner_"
+		if inv:is_empty("ingot") then
+			return
+		end
+	end
+	
+----------------------------------------------------------------------------------
 		local ingotstack = inv:get_stack("ingot", 1)
 		local resstack = inv:get_stack("res", 1)
-
-
-------------------------------------------------------------------------------------------
+----------------------------------------------------------------------------------
 --register nodes here
-------------------------------------------------------------------------------------------
-		if ingotstack:get_name()=="default:sandstone" then
-				material = "default_sandstone"
-				make_ok = "1"
-		end
+----------------------------------------------------------------------------------
+		local mat_table = {
+						{"default:sandstone",		"default_sandstone"},
+						{"default:clay",			"default_clay"},
+						{"default:desert_stone",	"default_desert_stone"},
+						{"default:desert_sandstone","default_desert_sandstone"},
+						{"default:silver_sandstone","default_silver_sandstone"},
+						{"default:cobble",			"default_cobble"},
+						{"default:stone",			"default_stone"},
+						{"default:wood",			"default_wood"},
+						{"default:pine_wood",		"default_pine_wood"},
+						{"default:aspen_wood",		"default_aspen_wood"},
+						{"default:acacia_wood",		"default_acacia_wood"},
+						{"default:dirt",			"default_dirt"},
+						{"default:desert_cobble",	"default_desert_cobble"},
+						{"default:gravel",			"default_gravel"},
+						{"default:junglewood",		"default_junglewood"},
+						{"default:mossycobble",		"default_mossycobble"},
+						{"farming:straw",			"farming_straw"},
+						--Wool
+						{"wool:white",				"wool_white"},
+						{"wool:black",				"wool_black"},
+						{"wool:blue",				"wool_blue"},
+						{"wool:brown",				"wool_brown"},
+						{"wool:cyan",				"wool_cyan"},
+						{"wool:dark_green",			"wool_cyan"},
+						{"wool:dark_grey",			"wool_dark_grey"},
+						{"wool:green",				"wool_green"},
+						{"wool:grey",				"wool_grey"},
+						{"wool:magenta",			"wool_magenta"},
+						{"wool:orange",				"wool_orange"},
+						{"wool:pink",				"wool_pink"},
+						{"wool:red",				"wool_red"},
+						{"wool:violet",				"wool_violet"},
+						{"wool:yellow",				"wool_yellow"},
+						--myores
+						{"myores:slate",			"slate"},
+						{"myores:shale",			"shale"},
+						{"myores:schist",			"schist"},
+						{"myores:gneiss",			"gneiss"},
+						{"myores:basalt",			"basalt"},
+						{"myores:granite",			"granite"},
+						{"myores:marble",			"marble"},
+						{"myores:chromium",			"chromium"},
+						{"myores:manganese",		"manganese"},
+						}
 
-		if ingotstack:get_name()=="default:clay" then
-				material = "default_clay"
+		for i in ipairs(mat_table) do
+			local items = mat_table[i][1]
+			local mater = mat_table[i][2]
+			
+			if ingotstack:get_name()== items then
+				material = mater
 				make_ok = "1"
+			end
 		end
-
-		if ingotstack:get_name()=="default:desert_stone" then
-				material = "default_desert_stone"
-				make_ok = "1"
-		end
-
-		if ingotstack:get_name()=="default:cobble" then
-				material = "default_cobble"
-				make_ok = "1"
-		end
-
-		if ingotstack:get_name()=="default:stone" then
-				material = "default_stone"
-				make_ok = "1"
-		end
-
-		if ingotstack:get_name()=="default:wood" then
-				material = "default_wood"
-				make_ok = "1"
-		end
-
-		if ingotstack:get_name()=="default:pine_wood" then
-				material = "default_pine_wood"
-				make_ok = "1"
-		end
-
-		if ingotstack:get_name()=="default:dirt" then
-				material = "default_dirt"
-				make_ok = "1"
-		end
-
-		if ingotstack:get_name()=="default:desert_cobble" then
-				material = "default_desert_cobble"
-				make_ok = "1"
-		end
-
-		if ingotstack:get_name()=="default:gravel" then
-				material = "default_gravel"
-				make_ok = "1"
-		end
-
-		if ingotstack:get_name()=="default:junglewood" then
-				material = "default_junglewood"
-				make_ok = "1"
-		end
-
-		if ingotstack:get_name()=="default:mossycobble" then
-				material = "default_mossycobble"
-				make_ok = "1"
-		end
-
-		if ingotstack:get_name()=="farming:straw" then
-				material = "farming_straw"
-				make_ok = "1"
-		end
-
-----------------------------------------------------------------------------
---wool
-
-		if ingotstack:get_name()=="wool:white" then
-				material = "wool_white"
-				make_ok = "1"
-		end
-		if ingotstack:get_name()=="wool:black" then
-				material = "wool_black"
-				make_ok = "1"
-		end
-		if ingotstack:get_name()=="wool:blue" then
-				material = "wool_blue"
-				make_ok = "1"
-		end
-		if ingotstack:get_name()=="wool:brown" then
-				material = "wool_brown"
-				make_ok = "1"
-		end
-		if ingotstack:get_name()=="wool:cyan" then
-				material = "wool_cyan"
-				make_ok = "1"
-		end
-		if ingotstack:get_name()=="wool:dark_green" then
-				material = "wool_dark_green"
-				make_ok = "1"
-		end
-		if ingotstack:get_name()=="wool:dark_grey" then
-				material = "wool_dark_grey"
-				make_ok = "1"
-		end
-		if ingotstack:get_name()=="wool:green" then
-				material = "wool_green"
-				make_ok = "1"
-		end
-		if ingotstack:get_name()=="wool:grey" then
-				material = "wool_grey"
-				make_ok = "1"
-		end
-		if ingotstack:get_name()=="wool:magenta" then
-				material = "wool_magenta"
-				make_ok = "1"
-		end
-		if ingotstack:get_name()=="wool:orange" then
-				material = "wool_orange"
-				make_ok = "1"
-		end
-		if ingotstack:get_name()=="wool:pink" then
-				material = "wool_pink"
-				make_ok = "1"
-		end
-		if ingotstack:get_name()=="wool:red" then
-				material = "wool_red"
-				make_ok = "1"
-		end
-		if ingotstack:get_name()=="wool:violet" then
-				material = "wool_violet"
-				make_ok = "1"
-		end
-		if ingotstack:get_name()=="wool:yellow" then
-				material = "wool_yellow"
-				make_ok = "1"
-		end
-
 ----------------------------------------------------------------------
 		if make_ok == "1" then
 			local give = {}
