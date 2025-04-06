@@ -80,7 +80,7 @@ mysiding.register_all(
 	"myores:manganese",
 	"normal"
 	)
-myflooring.register_block(
+mysiding.register_all(
 	"chalcopyrite", 
 	"Chalcopyrite", 
 	"myores_chalcopyrite.png",
@@ -88,7 +88,7 @@ myflooring.register_block(
 	"myores:chalcopyrite",
 	"normal"
 	)
-myflooring.register_block(
+mysiding.register_all(
 	"quartz", 
 	"Quartz", 
 	"myores_quartz.png",
