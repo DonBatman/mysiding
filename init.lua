@@ -6,3 +6,6 @@ dofile(minetest.get_modpath("mysiding").."/register.lua")
 if minetest.get_modpath("myores") then
 	dofile(minetest.get_modpath("mysiding").."/myores.lua")
 end
+if minetest.get_modpath("mywhiteblock") then
+	dofile(minetest.get_modpath("mysiding").."/mywhiteblock.lua")
+end
