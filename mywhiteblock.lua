@@ -50,6 +50,11 @@ if core.get_modpath("mydye") then
 	{"orchid",		"Orchid", 			"#DA70D6"},
 	}
 end
+
+local paintables = {
+	"mysiding:narrow_block","mysiding:wide_block","mysiding:light_narrow_block","mysiding:light_wide_block","mysiding:narrow_corner_block","mysiding:wide_corner_block","mysiding:light_narrow_corner_block","mysiding:light_wide_corner_block"
+}
+
 for i in ipairs(block_table) do
 	local mat = block_table[i][1]
 	local des = block_table[i][2]
@@ -76,3 +81,10 @@ mysiding.register_all(
 	"mywhiteblock:block",
 	"normal"
 	)
+if core.get_modpath("mypaint") then
+local colors = {}
+for _, entry in ipairs(block_table) do
+	table.insert(colors, entry[1])
+end
+	mypaint.register(paintables, colors)
+end

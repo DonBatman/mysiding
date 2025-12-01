@@ -1,7 +1,7 @@
 
 function mysiding.register_all(mat, desc, image, groups, craft)
 
-minetest.register_node("mysiding:wide_"..mat, {
+core.register_node("mysiding:wide_"..mat, {
 	description = desc.." Wide Siding",
 	drawtype = "normal",
 	tiles = {
@@ -20,7 +20,7 @@ minetest.register_node("mysiding:wide_"..mat, {
 	sounds = default.node_sound_stone_defaults(),
 })
 
-minetest.register_node("mysiding:narrow_"..mat, {
+core.register_node("mysiding:narrow_"..mat, {
 	description = desc.." Narrow Siding",
 	drawtype = "normal",
 	tiles = {
@@ -39,7 +39,7 @@ minetest.register_node("mysiding:narrow_"..mat, {
 	sounds = default.node_sound_stone_defaults(),
 })
 
-minetest.register_node("mysiding:wide_corner_"..mat, {
+core.register_node("mysiding:wide_corner_"..mat, {
 	description = desc.." Corner Wide Siding",
 	drawtype = "normal",
 	tiles = {
@@ -58,7 +58,7 @@ minetest.register_node("mysiding:wide_corner_"..mat, {
 	sounds = default.node_sound_stone_defaults(),
 })
 
-minetest.register_node("mysiding:narrow_corner_"..mat, {
+core.register_node("mysiding:narrow_corner_"..mat, {
 	description = desc.." Corner Narrow Siding",
 	drawtype = "normal",
 	tiles = {
@@ -78,7 +78,7 @@ minetest.register_node("mysiding:narrow_corner_"..mat, {
 })
 
 --------------------------------------------------------------------------
-minetest.register_node("mysiding:light_wide_"..mat, {
+core.register_node("mysiding:light_wide_"..mat, {
 	description = desc.." Wide Siding",
 	drawtype = "normal",
 	tiles = {
@@ -97,7 +97,7 @@ minetest.register_node("mysiding:light_wide_"..mat, {
 	sounds = default.node_sound_stone_defaults(),
 })
 
-minetest.register_node("mysiding:light_narrow_"..mat, {
+core.register_node("mysiding:light_narrow_"..mat, {
 	description = desc.." Narrow Siding",
 	drawtype = "normal",
 	tiles = {
@@ -116,7 +116,7 @@ minetest.register_node("mysiding:light_narrow_"..mat, {
 	sounds = default.node_sound_stone_defaults(),
 })
 
-minetest.register_node("mysiding:light_wide_corner_"..mat, {
+core.register_node("mysiding:light_wide_corner_"..mat, {
 	description = desc.." Corner Wide Siding",
 	drawtype = "normal",
 	tiles = {
@@ -135,7 +135,7 @@ minetest.register_node("mysiding:light_wide_corner_"..mat, {
 	sounds = default.node_sound_stone_defaults(),
 })
 
-minetest.register_node("mysiding:light_narrow_corner_"..mat, {
+core.register_node("mysiding:light_narrow_corner_"..mat, {
 	description = desc.." Corner Narrow Siding",
 	drawtype = "normal",
 	tiles = {

@@ -3,7 +3,7 @@ local shape = {}
 local make_ok = {}
 local anzahl = {}
 
-minetest.register_node("mysiding:machine2", {
+core.register_node("mysiding:machine2", {
 --	description = "Siding Machine 2",
 	tiles = {
 		"mysiding_right_top.png",
@@ -37,22 +37,22 @@ minetest.register_node("mysiding:machine2", {
 	},
 
 after_destruct = function(pos)
-	if minetest.get_node({x=pos.x + 1, y=pos.y, z=pos.z}).name == "mysiding:machine" then
-      minetest.set_node({x=pos.x + 1, y=pos.y, z=pos.z}, {name="air"})
+	if core.get_node({x=pos.x + 1, y=pos.y, z=pos.z}).name == "mysiding:machine" then
+      core.set_node({x=pos.x + 1, y=pos.y, z=pos.z}, {name="air"})
 	end
-	if minetest.get_node({x=pos.x - 1, y=pos.y, z=pos.z}).name == "mysiding:machine" then
-      minetest.set_node({x=pos.x - 1, y=pos.y, z=pos.z}, {name="air"})
+	if core.get_node({x=pos.x - 1, y=pos.y, z=pos.z}).name == "mysiding:machine" then
+      core.set_node({x=pos.x - 1, y=pos.y, z=pos.z}, {name="air"})
 	end
-	if minetest.get_node({x=pos.x, y=pos.y, z=pos.z + 1}).name == "mysiding:machine" then
-      minetest.set_node({x=pos.x, y=pos.y, z=pos.z + 1}, {name="air"})
+	if core.get_node({x=pos.x, y=pos.y, z=pos.z + 1}).name == "mysiding:machine" then
+      core.set_node({x=pos.x, y=pos.y, z=pos.z + 1}, {name="air"})
 	end
-	if minetest.get_node({x=pos.x, y=pos.y, z=pos.z - 1}).name == "mysiding:machine" then
-      minetest.set_node({x=pos.x, y=pos.y, z=pos.z - 1}, {name="air"})
+	if core.get_node({x=pos.x, y=pos.y, z=pos.z - 1}).name == "mysiding:machine" then
+      core.set_node({x=pos.x, y=pos.y, z=pos.z - 1}, {name="air"})
 	end
 end,
 })
 
-minetest.register_node("mysiding:machine", {
+core.register_node("mysiding:machine", {
 	description = "Siding Machine",
 	tiles = {
 		"mysiding_left_top.png",
@@ -102,12 +102,12 @@ after_place_node = function(pos, placer)
       else
          right_pos.z = right_pos.z-dir.x/math.abs(dir.x)
       end
-      local right_node = minetest.get_node(right_pos)
+      local right_node = core.get_node(right_pos)
 	if right_node.name == "air" then
-      minetest.set_node(right_pos, {name="mysiding:machine2",param2 = minetest.dir_to_facedir(placer:get_look_dir())})
+      core.set_node(right_pos, {name="mysiding:machine2",param2 = core.dir_to_facedir(placer:get_look_dir())})
 	end
 
-local meta = minetest.get_meta(pos);
+local meta = core.get_meta(pos);
 	meta:set_string("owner",  (placer:get_player_name() or ""));
 	meta:set_string("infotext",  "Siding Machine (owned by " .. (placer:get_player_name() or "") .. ")");
 	
@@ -121,7 +121,7 @@ local meta = minetest.get_meta(pos);
 end,
 
 can_dig = function(pos,player)
-	local meta = minetest.get_meta(pos);
+	local meta = core.get_meta(pos);
 	local inv = meta:get_inventory()
 	if player:get_player_name() == meta:get_string("owner") and
 	inv:is_empty("ingot") and
@@ -134,7 +134,7 @@ end,
 
 on_construct = function(pos)
 		
-	local meta = minetest.get_meta(pos)
+	local meta = core.get_meta(pos)
 	meta:set_string("formspec", "invsize[10,11;]"..
 		"background[-0.15,-0.25;10.40,11.75;mysiding_background.png]"..
 		"list[current_name;ingot;7,2;1,1;]"..
@@ -177,7 +177,7 @@ on_construct = function(pos)
 end,
 
 on_receive_fields = function(pos, formname, fields, sender)
-	local meta = minetest.get_meta(pos)
+	local meta = core.get_meta(pos)
 	local inv = meta:get_inventory()
 
 if fields["wide"] 
@@ -365,24 +365,24 @@ end
 end,
 
 after_destruct = function(pos)
-	if minetest.get_node({x=pos.x + 1, y=pos.y, z=pos.z}).name == "mysiding:machine2" then
-      minetest.set_node({x=pos.x + 1, y=pos.y, z=pos.z}, {name="air"})
+	if core.get_node({x=pos.x + 1, y=pos.y, z=pos.z}).name == "mysiding:machine2" then
+      core.set_node({x=pos.x + 1, y=pos.y, z=pos.z}, {name="air"})
 	end
-	if minetest.get_node({x=pos.x - 1, y=pos.y, z=pos.z}).name == "mysiding:machine2" then
-      minetest.set_node({x=pos.x - 1, y=pos.y, z=pos.z}, {name="air"})
+	if core.get_node({x=pos.x - 1, y=pos.y, z=pos.z}).name == "mysiding:machine2" then
+      core.set_node({x=pos.x - 1, y=pos.y, z=pos.z}, {name="air"})
 	end
-	if minetest.get_node({x=pos.x, y=pos.y, z=pos.z+ 1}).name == "mysiding:machine2" then
-      minetest.set_node({x=pos.x, y=pos.y, z=pos.z + 1}, {name="air"})
+	if core.get_node({x=pos.x, y=pos.y, z=pos.z+ 1}).name == "mysiding:machine2" then
+      core.set_node({x=pos.x, y=pos.y, z=pos.z + 1}, {name="air"})
 	end
-	if minetest.get_node({x=pos.x, y=pos.y, z=pos.z - 1}).name == "mysiding:machine2" then
-      minetest.set_node({x=pos.x, y=pos.y, z=pos.z - 1}, {name="air"})
+	if core.get_node({x=pos.x, y=pos.y, z=pos.z - 1}).name == "mysiding:machine2" then
+      core.set_node({x=pos.x, y=pos.y, z=pos.z - 1}, {name="air"})
 	end
 end,
 })
 
 --Craft
 
-minetest.register_craft({
+core.register_craft({
 		output = 'mysiding:machine',
 		recipe = {
 			{'default:copperblock', 'default:copperblock', 'default:copperblock'},
